@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <div id = "container">
+        <div id = "display"></div>
+        <div id="buttons">
+            <button class="button" id ="one">1</button>
+            <button class="button" id ="two">2</button>
+            <button class="button" id ="three">3</button>
+            <button class="button" id ="four">4</button>
+            <button class="button" id ="five">5</button>
+            <button class="button" id ="six">6</button>
+            <button class="button" id ="seven">7</button>
+            <button class="button" id ="eight">8</button>
+            <button class="button" id ="nine">9</button>
+            <button class="button" id ="equal">=</button>
+            <button class="button" id ="plus">+</button>
+            <button class="button" id ="minus">-</button>
+            <button class="button" id ="times">X</button>
+            <button class="button" id ="divide">/</button>
+            <button class="button" id ="delete">Del</button>
+            <button class="button" id ="reset" type="button"  onClick="window.location.reload()">AC</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        function operate(first, second, operator) {
+
+            if (operator === "plus") {
+                add(first, second);
+            }
+
+            else if (operator === "minus") {
+                subtract(first, second);
+            }
+
+            else if (operator === "times") {
+                multiply(first, second);
+            }
+
+            else if (operator === "div") {
+                divide(first, second);
+            }
+
+        }
+
+        function add(a, b) {
+            let c = a + b;
+            return c;
+        }
+
+        function subtract(a, b) {
+            let c = a - b;
+            return c;
+        }
+
+        function multiply(a, b) {
+            let c = a * b;
+            return c;
+        }
+
+        function divide(a, b) {
+            let c = a / b;
+            return c;
+        }
+    </script>
+</body>
+</html>
