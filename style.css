@@ -1,7 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+
+}
+#display {
+ background-color: lightgrey;
+ text-align: center;
+ width: 50px;
+}
+
 #container {
  background-color: black;
  height:500px;
  width:350px;
  display: flex;
- margin: auto auto; 
+ margin: auto;
+ padding: 10px;
+
 }
+
+#numbers {
+ text-align: center;
+ width: 300px;;
+}
+
+.button {
+ height:50px;
+ width: 50px;
+ margin:5px
+}
+
+#operators {
+ width: 50px;
+}
+
+#delete, #reset, #equal{
+ width: 115px;
+}
+
+
