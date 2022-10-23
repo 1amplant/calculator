@@ -9,23 +9,23 @@
 </head>
 <body>
     <div id = "container">
-        <div id = "display">3x4 </div>
+        <div id = "display"></div>
         <div id="numbers">
-            <button class="button" id ="seven">7</button>
-            <button class="button" id ="eight">8</button>
-            <button class="button" id ="nine">9</button>
-            <button class="operators" id ="plus">+</button>
-            <button class="button" id ="four">4</button>
-            <button class="button" id ="five">5</button>
-            <button class="button" id ="six">6</button>
-            <button class="operators" id ="minus">-</button>
-            <button class="button" id ="one">1</button>
-            <button class="button" id ="two">2</button>
-            <button class="button" id ="three">3</button>
-            <button class="operators" id ="times">X</button>
+            <button class="button" id ="n7">7</button>
+            <button class="button" id ="n8">8</button>
+            <button class="button" id ="n9">9</button>
+            <button class="operators" id ="n10">+</button>
+            <button class="button" id ="n4">4</button>
+            <button class="button" id ="n5">5</button>
+            <button class="button" id ="n6">6</button>
+            <button class="operators" id ="n11">-</button>
+            <button class="button" id ="n1">1</button>
+            <button class="button" id ="n2">2</button>
+            <button class="button" id ="n3">3</button>
+            <button class="operators" id ="n12">X</button>
             <button class="button" id ="delete">Del</button>
-            <button class="button" id ="zero">0</button>
-            <button class="operators" id ="divide">/</button>
+            <button class="button" id ="n0">0</button>
+            <button class="operators" id ="n13">/</button>
             <button class="button" id ="reset" type="button"  onClick="window.location.reload()">AC</button>
             <button class="button" id ="equal">=</button>
         </div>
@@ -35,7 +35,33 @@
 
 
     <script>
+        var first = []
 
+        for (let i = 0; i < 14; i++) {
+            let placeholder = document.querySelector("#n" + i).textContent
+            if (i < 10) {
+                document.querySelector("#n" + i).addEventListener("click", function() {
+                    document.getElementById("display").appendChild(document.createTextNode(placeholder));
+                    first.push(placeholder);
+                });
+
+            }
+            else if(i > 9) {
+                document.querySelector("#n" + i).addEventListener("click", function() {
+
+                })
+            }
+    
+
+            
+        }
+            
+
+            
+
+        
+
+ 
         function operate(first, second, operator) {
 
             if (operator === "plus") {
