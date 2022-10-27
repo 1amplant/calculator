@@ -27,7 +27,7 @@
             <button class="button" id ="n0">0</button>
             <button class="operators" id ="n13">/</button>
             <button class="button" id ="reset" type="button"  onClick="window.location.reload()">AC</button>
-            <button class="button" id ="equal">=</button>
+            <button class="button" id ="n14">=</button>
         </div>
 
 
@@ -35,22 +35,58 @@
 
 
     <script>
-        var first = []
+        var store = [];
+        
+
+
 
         for (let i = 0; i < 14; i++) {
+            let counter = 0;
             let placeholder = document.querySelector("#n" + i).textContent
             if (i < 10) {
                 document.querySelector("#n" + i).addEventListener("click", function() {
+                    counter = 0;
                     document.getElementById("display").appendChild(document.createTextNode(placeholder));
-                    first.push(placeholder);
+
                 });
 
             }
-            else if(i > 9) {
+            else if(i < 13 && i > 9) {
                 document.querySelector("#n" + i).addEventListener("click", function() {
+                    if (counter === 0) {
+                        let number = document.getElementById("display").textContent;
+                        store.push({
+                            number: number,
+                            operator: placeholder
+                            });
+                        document.getElementById("display").innerHTML = placeholder;
+                        counter++;
+                    }
+                    else {
+                        let number = document.getElementById("display").textContent;
+                        document.getElementById("display").innerHTML = placeholder;
+                        store[0].number = operate(store[0].number, number, store[counter-1].operator);
+                        store.push({
+                            number: number,
+                            operator: placeholder
+                            });
 
-                })
+                        counter++;
+                    }
+                });
             }
+
+
+            else if (i === 14) {
+                let number = document.getElementById("display").textContent;
+                let result = operate(store[0].number, number, store[counter-1].operator);
+                document.getElementById("display").innerHTML = result;
+            }
+                    
+
+                    
+                
+        
     
 
             
@@ -64,19 +100,19 @@
  
         function operate(first, second, operator) {
 
-            if (operator === "plus") {
+            if (operator === "+") {
                 add(first, second);
             }
 
-            else if (operator === "minus") {
+            else if (operator === "-") {
                 subtract(first, second);
             }
 
-            else if (operator === "times") {
+            else if (operator === "X") {
                 multiply(first, second);
             }
 
-            else if (operator === "div") {
+            else if (operator === "/") {
                 divide(first, second);
             }
 
