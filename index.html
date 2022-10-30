@@ -37,13 +37,9 @@
     <script>
         var store = [];
         var nCounter = 0;
+        let counter = 0;
  
- 
-
-
-
-        for (let i = 0; i < 14; i++) {
-            let counter = 0;
+        for (let i = 0; i < 15; i++) {
             let placeholder = document.querySelector("#n" + i).textContent
      
 
@@ -75,6 +71,7 @@
                             });
                         document.getElementById("display").innerHTML = placeholder;
                         counter++;
+                        console.log(store[0].number)
                     }
                     else {
                         let number = document.getElementById("display").textContent;
@@ -86,15 +83,19 @@
                             });
 
                         counter++;
+                        console.log(store[0].number)
                     }
                 });
             }
 
 
             else if (i === 14) {
-                let number = document.getElementById("display").textContent;
-                let result = operate(store[0].number, number, store[counter-1].operator);
-                document.getElementById("display").innerHTML = result;
+  
+                document.querySelector("#n" + i).addEventListener("click", function() {
+                    let number = document.getElementById("display").textContent;
+                    let result = operate(store[0].number, number, store[counter-1].operator);
+                    document.getElementById("display").innerHTML = result;
+                });
             }
                     
 
@@ -107,42 +108,47 @@
         
 
  
-        function operate(first, second, operator) {
+        function operate(one, two, operator) {
+            let result;
+            let second = parseInt(two);
+            let first = parseInt(one);
 
             if (operator === "+") {
-                add(first, second);
+                result = plus(first, second);
             }
 
             else if (operator === "-") {
-                subtract(first, second);
+                result = minus(first, second);
             }
 
             else if (operator === "X") {
-                multiply(first, second);
+                result = times(first, second);
             }
 
             else if (operator === "/") {
-                divide(first, second);
+                result = div(first, second);
             }
+
+            return result;
 
         }
 
-        function add(a, b) {
+        function plus(a, b) {
             let c = a + b;
             return c;
         }
 
-        function subtract(a, b) {
+        function minus(a, b) {
             let c = a - b;
             return c;
         }
 
-        function multiply(a, b) {
+        function times(a, b) {
             let c = a * b;
             return c;
         }
 
-        function divide(a, b) {
+        function div(a, b) {
             let c = a / b;
             return c;
         }
