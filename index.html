@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id = "header">Calculator</div>
     <div id = "container">
         <div id = "display"></div>
         <div id="numbers">
@@ -94,7 +95,21 @@
                 document.querySelector("#n" + i).addEventListener("click", function() {
                     let number = document.getElementById("display").textContent;
                     let result = operate(store[0].number, number, store[counter-1].operator);
-                    document.getElementById("display").innerHTML = result;
+
+                    if (result === Infinity){
+                        location.reload()
+                        alert("Error in equation detected! Please do not divide by zero to avoid triggering this error!")
+                    }
+
+                    else if (Number.isNaN(result)){
+                        location.reload()
+                        alert("Error in equation detected! Please ensure you did not key in an operator twice in a row to avoid triggering this error!")
+                    }
+
+                    else {
+                        document.getElementById("display").innerHTML = result;
+                        console.log(store[0].number)
+                    }
                 });
             }
                     
@@ -126,7 +141,9 @@
             }
 
             else if (operator === "/") {
+
                 result = div(first, second);
+
             }
 
             return result;
