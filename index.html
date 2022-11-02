@@ -24,7 +24,7 @@
             <button class="button" id ="n2">2</button>
             <button class="button" id ="n3">3</button>
             <button class="operators" id ="n12">X</button>
-            <button class="button" id ="delete">Del</button>
+            <button class="button" id ="n15">Del</button>
             <button class="button" id ="n0">0</button>
             <button class="operators" id ="n13">/</button>
             <button class="button" id ="reset" type="button"  onClick="window.location.reload()">AC</button>
@@ -40,7 +40,7 @@
         var nCounter = 0;
         let counter = 0;
  
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 16; i++) {
             let placeholder = document.querySelector("#n" + i).textContent
      
 
@@ -48,12 +48,12 @@
                 
     
                 document.querySelector("#n" + i).addEventListener("click", function() {
-                    if (nCounter === 1) {
+                    if (nCounter > 0) {
                         document.getElementById("display").appendChild(document.createTextNode(placeholder));
                     }
 
                     else if (nCounter === 0)  {
-                        nCounter = 1;
+                        nCounter++;
                         document.getElementById("display").textContent = placeholder;
                     }
                 });
@@ -111,6 +111,15 @@
                         console.log(store[0].number)
                     }
                 });
+            }
+
+            else if (i === 15) {
+                document.querySelector("#n" + i).addEventListener("click", function() {
+                    let backspace = document.getElementById("display").textContent;
+                    backspace = backspace.substring(0, backspace.length - 1);
+                    document.getElementById("display").textContent = backspace;
+                });
+
             }
                     
 
