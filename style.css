@@ -65,7 +65,7 @@ body {
  margin-top: 20px;
 }
 
-.button, .operators {
+.button, .operators, .ac {
  height:50px;
  width: 50px;
  margin:5px
@@ -75,7 +75,7 @@ body {
 }
 
 
-#n15, #reset, #n14{
+#n15, #reset{
  width: 115px;
  background-color: orange;
 }

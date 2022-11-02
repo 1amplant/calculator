@@ -24,11 +24,12 @@
             <button class="button" id ="n2">2</button>
             <button class="button" id ="n3">3</button>
             <button class="operators" id ="n12">X</button>
-            <button class="button" id ="n15">Del</button>
             <button class="button" id ="n0">0</button>
+            <button class="button" id ="n16">.</button>    
+            <button class="operators" id ="n14">=</button>
             <button class="operators" id ="n13">/</button>
-            <button class="button" id ="reset" type="button"  onClick="window.location.reload()">AC</button>
-            <button class="button" id ="n14">=</button>
+            <button class="ac" id ="reset" type="button"  onClick="window.location.reload()">AC</button>
+            <button class="operators" id ="n15">Del</button>
         </div>
 
 
@@ -40,11 +41,11 @@
         var nCounter = 0;
         let counter = 0;
  
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 17; i++) {
             let placeholder = document.querySelector("#n" + i).textContent
      
 
-            if (i < 10) {
+            if (i < 10 || i == 16) {
                 
     
                 document.querySelector("#n" + i).addEventListener("click", function() {
@@ -107,8 +108,12 @@
                     }
 
                     else {
-                        document.getElementById("display").innerHTML = result;
-                        console.log(store[0].number)
+                        document.getElementById("display").innerHTML = result.toFixed(10);
+                        console.log(store[0].number);
+
+                        document.querySelectorAll('.operators').forEach(elem => {
+                            elem.disabled = true;
+                        });
                     }
                 });
             }
@@ -134,8 +139,8 @@
  
         function operate(one, two, operator) {
             let result;
-            let second = parseInt(two);
-            let first = parseInt(one);
+            let second = parseFloat(two);
+            let first = parseFloat(one);
 
             if (operator === "+") {
                 result = plus(first, second);
